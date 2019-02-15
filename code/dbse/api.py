@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: iso-8859-1 -*-
 
-'''DES Zeug BRAUCHT NUR MEIN PYTHON WEIL QT RUMGURKT'''
 import os
 from dbse.All import All
 import pandas as pd
@@ -131,7 +130,7 @@ class Tester(object):
                     cur_df2 = cur_df1[cur_df1['cluster_id'] == cluster_id]
                     current_test_df = cur_df2.sort_values("RUL", ascending=False)
 
-                    # 3.2. Verkürzen und skip wenn nötig
+                    # 3.2. VerkÃ¼rzen und skip wenn nÃ¶tig
                     dist = current_test_df["RUL"].max()- current_test_df["RUL"].min()
                     try: skip = skip_features[0][int(cluster_id)]
                     except: skip = []
@@ -192,7 +191,7 @@ class Tester(object):
                     feat_favs ={}
 
 
-            # SCHATZUNG 1: NEHME weighted average des letzten stage results
+            # Estimation 1: Use weighted average of last stage results
             try:
                 res_x = results[-1][0]
                 res_w = results[-1][1]
@@ -201,7 +200,7 @@ class Tester(object):
             except:
                 continue
 
-            # SCHATZUNG 2: Nehme Average aller feature favorites
+            # Estimation 2: Use Average of all feature favorites
             feature_favs_of_all = [value for value in feature_favs_of_all if not math.isnan(value)]
             # Outlier via average
             aa = numpy.average(feature_favs_of_all)
